@@ -61,9 +61,11 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     swarm_grp.run(leave_swarm_forcefully)
     print('** nodes left swarm if they were part of it **')
 
+
     def stop_swarm_cluster():
         swarm_grp.run('sudo docker swarm leave')
         subprocess.run(shlex.split('sudo docker swarm leave -f'))
+
 
     def clear_env():
         swarm_grp.run(
@@ -74,6 +76,8 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
         swarm_grp.run('sudo rm -rf /var/lib/docker')
         swarm_grp.run('sudo rm /etc/apt/keyrings/docker.gpg')
 
+
+    stop_swarm_cluster()
     # Initialize Docker Swarm
     ret = subprocess.run(['sudo', 'docker', 'swarm', 'init', '--advertise-addr', args.ip], capture_output=True)
     print('** swarm manager initialized **')
