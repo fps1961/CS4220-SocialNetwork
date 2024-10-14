@@ -137,7 +137,7 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     subprocess.run(shlex.split('mvn package'))
     subprocess.run(shlex.split('chmod +x ./cpToCloud.sh'))
     subprocess.run(shlex.split('ls -al'))
-    subprocess.run('./cpToCloud.sh')
+    subprocess.run(shlex.split('./cpToCloud.sh'))
     print('** client binary distributed **')
 
     # we move register here to ensure all the services have launched
