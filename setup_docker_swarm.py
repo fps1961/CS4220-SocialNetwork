@@ -10,8 +10,8 @@ from fabric import ThreadingGroup
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-n', '--number', type=int, required=True, help='Docker Swarm Cluter Size')
-    parser.add_argument('-a', '--ip', type=str, required=True, help='Mgr IP')
+    parser.add_argument('-n', '--number', type=int, required=True, help='Docker Swarm Cluster Size')
+    parser.add_argument('-a', '--ip', type=str, required=True, help='Manager IP')
     parser.add_argument('-cn', '--client-number', type=int, required=True, help='Client Cluster Size')
     return parser.parse_args()
 
@@ -31,6 +31,15 @@ else
     echo "Docker is already installed, skipping installation"
 fi
 '''
+
+leave_swarm_forcefully = '''if docker info | grep -q "Swarm: active"; then
+    echo "Node is part of a swarm, leaving the swarm forcefully"
+    sudo docker swarm leave --force
+else
+    echo "Node is not part of a swarm, skipping swarm leave"
+fi
+'''
+
 install_collectl = 'sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y collectl'
 install_sysdig = 'sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y sysdig'
 delete_repo = 'rm -rf DeathStarBench'
@@ -48,12 +57,14 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     swarm_grp.run(install_docker)
     print('** docker installed **')
 
+    # Forcefully leave swarm if part of one
+    swarm_grp.run(leave_swarm_forcefully)
+    print('** nodes left swarm if they were part of it **')
+
     def stop_swarm_cluster():
         swarm_grp.run('sudo docker swarm leave')
         subprocess.run(shlex.split('sudo docker swarm leave -f'))
 
-
-    # stop_swarm_cluster()
     def clear_env():
         swarm_grp.run(
             'sudo apt-get -y purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras')
@@ -63,15 +74,13 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
         swarm_grp.run('sudo rm -rf /var/lib/docker')
         swarm_grp.run('sudo rm /etc/apt/keyrings/docker.gpg')
 
-
-    # clear_env()
-
+    # Initialize Docker Swarm
     ret = subprocess.run(['sudo', 'docker', 'swarm', 'init', '--advertise-addr', args.ip], capture_output=True)
     print('** swarm manager initialized **')
     swarm_join_cmd_ptn = r'(docker swarm join --token .*:\d+)'
     swarm_join_cmd = re.search(swarm_join_cmd_ptn, ret.stdout.decode('utf-8'))
     if swarm_join_cmd is None:
-        print('Don\'t find match pattern for docker swarm join:')
+        print('Didn\'t find match pattern for docker swarm join:')
         print(f'The ret of swarm init is {ret}')
         exit(0)
     else:
