@@ -135,7 +135,7 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     os.chdir(Path.home() / 'RubbosClient_src')
     subprocess.run(shlex.split('mvn clean'))
     subprocess.run(shlex.split('mvn package'))
-    subprocess.run('chmod +x ./cpToCloud.sh')
+    subprocess.run(shlex.split('chmod +x ./cpToCloud.sh'))
     subprocess.run('./cpToCloud.sh')
     print('** client binary distributed **')
 
@@ -146,7 +146,7 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     subprocess.run(shlex.split('sudo luarocks install luasocket'))
     os.chdir(Path.home() / 'DeathStarBench' / 'socialNetwork')
     # TODO: check if socialNetwork is successfully deployed
-    subprocess.run('chmod +x ./start.sh')
+    subprocess.run(shlex.split('chmod +x ./start.sh'))
     subprocess.run(shlex.split('./start.sh register'))
     subprocess.run(shlex.split('./start.sh compose'))
     print('** socialNetwork data created **')
