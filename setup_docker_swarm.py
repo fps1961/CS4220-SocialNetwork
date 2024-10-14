@@ -49,17 +49,6 @@ args = parse_args()
 with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_grp, \
         ThreadingGroup(*[f'node-{idx}' for idx in range(args.number, args.number + args.client_number)]) as client_grp:
     swarm_grp.run(delete_repo)
-    swarm_grp.run(install_collectl)
-    print('** collectl installed **')
-    swarm_grp.run(clone_official_socialnetwork_repo)
-    print('** socialNetwork cloned **')
-
-    swarm_grp.run(install_docker)
-    print('** docker installed **')
-
-    # Forcefully leave swarm if part of one
-    swarm_grp.run(leave_swarm_forcefully)
-    print('** nodes left swarm if they were part of it **')
 
 
     def stop_swarm_cluster():
@@ -78,6 +67,15 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
 
 
     stop_swarm_cluster()
+    clear_env()
+    swarm_grp.run(install_collectl)
+    print('** collectl installed **')
+    swarm_grp.run(clone_official_socialnetwork_repo)
+    print('** socialNetwork cloned **')
+
+    swarm_grp.run(install_docker)
+    print('** docker installed **')
+
     # Initialize Docker Swarm
     ret = subprocess.run(['sudo', 'docker', 'swarm', 'init', '--advertise-addr', args.ip], capture_output=True)
     print('** swarm manager initialized **')
