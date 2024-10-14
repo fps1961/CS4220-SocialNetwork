@@ -66,8 +66,7 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
         swarm_grp.run('sudo rm /etc/apt/keyrings/docker.gpg')
 
 
-    stop_swarm_cluster()
-    clear_env()
+
     swarm_grp.run(install_collectl)
     print('** collectl installed **')
     swarm_grp.run(clone_official_socialnetwork_repo)
