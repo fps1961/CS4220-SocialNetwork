@@ -35,8 +35,8 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     print('** collectl installed **')
     swarm_grp.run(clone_official_socialnetwork_repo)
     print('** socialNetwork cloned **')
-    swarm_grp.run(install_docker)
-    print('** docker installed **')
+    # swarm_grp.run(install_docker)
+    # print('** docker installed **')
 
     def stop_swarm_cluster():
         swarm_grp.run('sudo docker swarm leave')
