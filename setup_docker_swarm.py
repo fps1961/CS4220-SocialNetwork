@@ -135,10 +135,9 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     os.chdir(Path.home() / 'RubbosClient_src')
     subprocess.run(shlex.split('mvn clean'))
     subprocess.run(shlex.split('mvn package'))
-    print("Current directory:", os.getcwd())
     subprocess.run(shlex.split('chmod +x ./cpToCloud.sh'))
     subprocess.run(shlex.split('ls -al'))
-    subprocess.run(shlex.split('cpToCloud.sh'))
+    subprocess.run(shlex.split('./cpToCloud.sh'))
     print('** client binary distributed **')
 
     # we move register here to ensure all the services have launched
@@ -149,8 +148,8 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     os.chdir(Path.home() / 'DeathStarBench' / 'socialNetwork')
     # TODO: check if socialNetwork is successfully deployed
     subprocess.run(shlex.split('chmod +x start.sh'))
-    subprocess.run(shlex.split('start.sh register'))
-    subprocess.run(shlex.split('start.sh compose'))
+    subprocess.run(shlex.split('./start.sh register'))
+    subprocess.run(shlex.split('./start.sh compose'))
     print('** socialNetwork data created **')
 
     subprocess.run(shlex.split('sudo ./start.sh dedicate'))
