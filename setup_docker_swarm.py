@@ -135,6 +135,7 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     os.chdir(Path.home() / 'RubbosClient_src')
     subprocess.run(shlex.split('mvn clean'))
     subprocess.run(shlex.split('mvn package'))
+    print("Current directory:", os.getcwd())
     subprocess.run(shlex.split('chmod +x ./cpToCloud.sh'))
     subprocess.run(shlex.split('ls -al'))
     subprocess.run(shlex.split('cpToCloud.sh'))
