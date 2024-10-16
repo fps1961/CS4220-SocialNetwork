@@ -132,7 +132,7 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     # subprocess.run(shlex.split('sudo ./start.sh start'))
     # print('** socialNetwork stack deployed **')
     #
-    # os.chdir(Path.home() / 'RubbosClient_src')
+    os.chdir(Path.home() / 'RubbosClient_src')
     # # subprocess.run(shlex.split('sudo apt install dos2unix'))
     # subprocess.run(shlex.split('mvn clean'))
     # subprocess.run(shlex.split('mvn package'))
