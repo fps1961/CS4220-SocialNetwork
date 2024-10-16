@@ -133,12 +133,12 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     print('** socialNetwork stack deployed **')
 
     os.chdir(Path.home() / 'RubbosClient_src')
-    subprocess.run(shlex.split('sudo apt install dos2unix'))
+    # subprocess.run(shlex.split('sudo apt install dos2unix'))
     subprocess.run(shlex.split('mvn clean'))
     subprocess.run(shlex.split('mvn package'))
-    subprocess.run(shlex.split('chmod +x ./cpToCloud.sh'))
-    subprocess.run(shlex.split('dos2unix ./cpToCloud.sh'))
-    subprocess.run(shlex.split('ls -al'))
+    # subprocess.run(shlex.split('chmod +x ./cpToCloud.sh'))
+    # subprocess.run(shlex.split('dos2unix ./cpToCloud.sh'))
+    # subprocess.run(shlex.split('ls -al'))
     subprocess.run(shlex.split('./cpToCloud.sh'))
     print('** client binary distributed **')
 
@@ -149,8 +149,8 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     subprocess.run(shlex.split('sudo luarocks install luasocket'))
     os.chdir(Path.home() / 'DeathStarBench' / 'socialNetwork')
     # TODO: check if socialNetwork is successfully deployed
-    subprocess.run(shlex.split('chmod +x ./start.sh'))
-    subprocess.run(shlex.split('dos2unix ./start.sh'))
+    # subprocess.run(shlex.split('chmod +x ./start.sh'))
+    # subprocess.run(shlex.split('dos2unix ./start.sh'))
     subprocess.run(shlex.split('./start.sh register'))
     subprocess.run(shlex.split('./start.sh compose'))
     print('** socialNetwork data created **')
