@@ -47,11 +47,11 @@ SYSVIZ_RUBBOS_RESULTS_DIR_BASE=/home/qywang/AnaResult-CA
 
 
 # Target directories
-ELBA_TOP=$HOME/elba
+ELBA_TOP=$HOME/SetupScripts/RubbosClient/elba
 RUBBOS_TOP=$ELBA_TOP/rubbos
-TMP_RESULTS_DIR_BASE=$HOME/elba/rubbos/results
-RUBBOS_HOME=$HOME/elba/rubbos/RUBBoS
-SYSSTAT_HOME=$HOME/elba/rubbos/sysstat-10.0.2
+TMP_RESULTS_DIR_BASE=$HOME/SetupScripts/RubbosClient/elba/rubbos/results
+RUBBOS_HOME=$HOMESetupScripts/RubbosClient/elba/rubbos/RUBBoS
+SYSSTAT_HOME=$HOME/SetupScripts/RubbosClient/elba/rubbos/sysstat-10.0.2
 HTTPD_HOME=/home/xgu/elba/rubbos/apache2
 HTTPD_INSTALL_FILES=$RUBBOS_TOP/httpd-2.2.31
 MOD_JK_INSTALL_FILES=$RUBBOS_TOP/tomcat-connectors-1.2.46-src
@@ -62,9 +62,9 @@ MYSQL_HOME=$RUBBOS_TOP/mysql-5.5.54-linux2.6-x86_64
 JONAS_ROOT=$RUBBOS_TOP/JONAS_4_6_6
 
 # Java & Ant
-JAVA_HOME=$HOME/elba/rubbos/jdk1.8.0_241
+JAVA_HOME=$HOME/SetupScripts/RubbosClient/elba/rubbos/jdk1.8.0_241
 JAVA_OPTS="-Xmx1300m"
-J2EE_HOME=$HOME/elba/rubbos/j2sdkee1.3.1
+J2EE_HOME=$HOME/SetupScripts/RubbosClient/elba/rubbos/j2sdkee1.3.1
 ANT_HOME=$RUBBOS_TOP/apache-ant-1.6.5
 
 # Tarballs

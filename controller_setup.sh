@@ -100,10 +100,11 @@ ssh -o StrictHostKeyChecking=no -i ${private_ssh_key_path} ${username}@${control
   python setup_docker_swarm.py -a 10.10.1.1 -n ${swarm_node_number} -cn ${client_node_number}
   cd ~/DeathStarBench/socialNetwork
   source set_elba_env.sh
-  chmod +x ./scripts/CONTROL_exec.sh
+  chmod -R +x ./scripts/
   ./scripts/CONTROL_exec.sh
   sudo cp /users/${username}/scripts_limit/generateResult.sh /users/${username}/socialNetwork/
   sudo apt install -y python2
   cd /users/${username}/socialNetwork/
+  chmod -R +x /
   ./generateResult.sh &> output.log
 "
