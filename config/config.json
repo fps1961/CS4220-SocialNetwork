@@ -1,5 +1,5 @@
 {
-    "username": "$your_cloud_lab_username",
-    "experiment_name": "$username-six_digit_number",
-    "ssh_host": "$host_ssh_name"
+    "username": "FPS",
+    "experiment_name": "FPS-224988",
+    "ssh_host": "apt.emulab.net"
 }

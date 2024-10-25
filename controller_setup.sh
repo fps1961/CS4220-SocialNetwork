@@ -88,8 +88,10 @@ ssh -o StrictHostKeyChecking=no -i ${private_ssh_key_path} ${username}@${control
   sudo sh -c \"echo 'Host *\n\tStrictHostKeyChecking no' >> /root/.ssh/config\"
   git config --global user.email ${git_email}
   git config --global user.name ${username}
-  git config --global core.editor "vim"
-  git clone git@github.com:WindowsXp-Beta/SocialNetwork.git SetupScripts
+  git config --global core.editor \"vim\"
+  chmod 400 ~/.ssh/id_rsa
+  rm -rf SetupScripts
+  git clone git@github.com:fps1961/CS4220-SocialNetwork.git SetupScripts
   unzip socialNetworkLSU
   sudo apt-get update
   sudo apt-get install -y python3-pip maven pdfgrep
@@ -98,6 +100,7 @@ ssh -o StrictHostKeyChecking=no -i ${private_ssh_key_path} ${username}@${control
   python setup_docker_swarm.py -a 10.10.1.1 -n ${swarm_node_number} -cn ${client_node_number}
   cd ~/DeathStarBench/socialNetwork
   source set_elba_env.sh
+  chmod +x ./scripts/CONTROL_exec.sh
   ./scripts/CONTROL_exec.sh
   sudo cp /users/${username}/scripts_limit/generateResult.sh /users/${username}/socialNetwork/
   sudo apt install -y python2
