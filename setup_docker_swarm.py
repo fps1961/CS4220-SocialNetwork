@@ -1,9 +1,10 @@
 import argparse
 import os
+import re
 import shlex
 import subprocess
 from pathlib import Path
-import re
+
 from fabric import ThreadingGroup
 
 
@@ -65,7 +66,6 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
         swarm_grp.run('sudo rm /etc/apt/keyrings/docker.gpg')
 
 
-
     swarm_grp.run(install_collectl)
     print('** collectl installed **')
     swarm_grp.run(clone_official_socialnetwork_repo)
@@ -124,8 +124,7 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     print('** customized socialNetwork docker images built **')
 
     os.chdir(Path.home())
-    subprocess.run('mv socialNetwork/* DeathStarBench/socialNetwork/', shell=True)
-    subprocess.run('mv socialNetwork/scripts/*.sh DeathStarBench/socialNetwork/scripts/', shell=True)
+    subprocess.run('rsync -a --remove-source-files socialNetwork/ DeathStarBench/socialNetwork/', shell=True)
     subprocess.run(shlex.split('rm -r socialNetwork/scripts'))
     os.chdir(Path.home() / 'DeathStarBench' / 'socialNetwork')
     subprocess.run(shlex.split('sudo ./start.sh start'))
