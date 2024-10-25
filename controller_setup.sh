@@ -105,6 +105,6 @@ ssh -o StrictHostKeyChecking=no -i ${private_ssh_key_path} ${username}@${control
   sudo cp /users/${username}/scripts_limit/generateResult.sh /users/${username}/socialNetwork/
   sudo apt install -y python2
   cd /users/${username}/socialNetwork/
-  chmod -R +x /
+  chmod -R +x ./generateResult.sh
   ./generateResult.sh &> output.log
 "
