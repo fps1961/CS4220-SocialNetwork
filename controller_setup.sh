@@ -101,10 +101,10 @@ ssh -o StrictHostKeyChecking=no -i ${private_ssh_key_path} ${username}@${control
   cd ~/DeathStarBench/socialNetwork
   source set_elba_env.sh
   chmod -R +x ./scripts/
-  ./scripts/CONTROL_exec.sh
+  sudo ./scripts/CONTROL_exec.sh
   sudo cp /users/${username}/scripts_limit/generateResult.sh /users/${username}/socialNetwork/
   sudo apt install -y python2
   cd /users/${username}/socialNetwork/
   sudo chmod -R +x ./generateResult.sh
-  ./generateResult.sh &> output.log
+  sudo ./generateResult.sh &> output.log
 "
