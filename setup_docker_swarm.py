@@ -146,8 +146,8 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     os.chdir(Path.home() / 'DeathStarBench' / 'socialNetwork')
     # TODO: check if socialNetwork is successfully deployed
     subprocess.run(shlex.split('chmod +x ./start.sh'))
-    subprocess.run(shlex.split('./start.sh register'))
-    subprocess.run(shlex.split('./start.sh compose'))
+    subprocess.run(shlex.split('sudo ./start.sh register'))
+    subprocess.run(shlex.split('sudo ./start.sh compose'))
     print('** socialNetwork data created **')
 
     subprocess.run(shlex.split('sudo ./start.sh dedicate'))
