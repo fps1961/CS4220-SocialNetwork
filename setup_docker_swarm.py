@@ -127,6 +127,7 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     subprocess.run('rsync -a --remove-source-files socialNetwork/ DeathStarBench/socialNetwork/', shell=True)
     subprocess.run(shlex.split('rm -r socialNetwork/scripts'))
     os.chdir(Path.home() / 'DeathStarBench' / 'socialNetwork')
+    subprocess.run(shlex.split('chmod +x ./start.sh'))
     subprocess.run(shlex.split('sudo ./start.sh start'))
     print('** socialNetwork stack deployed **')
 
@@ -145,7 +146,6 @@ with ThreadingGroup(*[f'node-{idx}' for idx in range(0, args.number)]) as swarm_
     subprocess.run(shlex.split('sudo luarocks install luasocket'))
     os.chdir(Path.home() / 'DeathStarBench' / 'socialNetwork')
     # TODO: check if socialNetwork is successfully deployed
-    subprocess.run(shlex.split('chmod +x ./start.sh'))
     subprocess.run(shlex.split('sudo ./start.sh register'))
     subprocess.run(shlex.split('sudo ./start.sh compose'))
     print('** socialNetwork data created **')
