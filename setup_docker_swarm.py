@@ -18,15 +18,18 @@ def parse_args():
 
 install_docker = '''if ! command -v docker &> /dev/null; then
     echo "Docker not found, proceeding with installation"
+    sudo mkdir -p /proj/infosphere-PG0/docker
+    sudo ln -s /proj/infosphere-PG0/docker /var/lib/docker
     sudo apt-get update && \
     sudo DEBIAN_FRONTEND=noninteractive apt-get -y install \
     ca-certificates curl gnupg lsb-release && \
     sudo install -m 0755 -d /etc/apt/keyrings && \
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --batch --yes --dearmor -o /etc/apt/keyrings/docker.gpg && \
-    echo \"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" | \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null && \
     sudo apt-get update && \
-    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce docker-ce-cli containerd.io
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce docker-ce-cli containerd.io && \
+    echo '{"data-root": "/proj/infosphere-PG0/docker"}' | sudo tee /etc/docker/daemon.json
 else
     echo "Docker is already installed, skipping installation"
 fi
