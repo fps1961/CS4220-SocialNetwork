@@ -18,8 +18,6 @@ def parse_args():
 
 install_docker = '''if ! command -v docker &> /dev/null; then
     echo "Docker not found, proceeding with installation"
-    sudo mkdir -p /proj/infosphere-PG0/docker
-    sudo ln -s /proj/infosphere-PG0/docker /var/lib/docker
     sudo apt-get update && \
     sudo DEBIAN_FRONTEND=noninteractive apt-get -y install \
     ca-certificates curl gnupg lsb-release && \
@@ -29,7 +27,25 @@ install_docker = '''if ! command -v docker &> /dev/null; then
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null && \
     sudo apt-get update && \
     sudo DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce docker-ce-cli containerd.io && \
-    echo '{"data-root": "/proj/infosphere-PG0/docker"}' | sudo tee /etc/docker/daemon.json
+    echo "Docker installed successfully"
+
+    # Stop Docker service before making changes
+    sudo systemctl stop docker
+
+    # Create new directory for Docker data
+    sudo mkdir -p /mnt/data/docker
+
+    # Configure Docker to use the new directory for data storage
+    echo '{"data-root": "/mnt/data/docker"}' | sudo tee /etc/docker/daemon.json > /dev/null
+
+    # Optionally, move existing Docker data from /var/lib/docker to /mnt/data/docker
+    if [ -d "/var/lib/docker" ]; then
+        echo "Moving existing Docker data from /var/lib/docker to /mnt/data/docker"
+        sudo rsync -aP /var/lib/docker/ /mnt/data/docker/
+    fi
+
+    # Restart Docker service
+    sudo systemctl start docker
 else
     echo "Docker is already installed, skipping installation"
 fi
