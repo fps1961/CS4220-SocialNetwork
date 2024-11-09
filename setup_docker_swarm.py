@@ -36,7 +36,7 @@ install_docker = '''if ! command -v docker &> /dev/null; then
     sudo mkdir -p /mnt/data/docker
 
     # Configure Docker to use the new directory for data storage
-    echo '{"data-root": "/mnt/data/docker"}' | sudo tee /etc/docker/daemon.json > /dev/null
+    echo '{"data-root": "/dev/mnt/data/docker"}' | sudo tee /etc/docker/daemon.json > /dev/null
 
     # Optionally, move existing Docker data from /var/lib/docker to /mnt/data/docker
     if [ -d "/var/lib/docker" ]; then
