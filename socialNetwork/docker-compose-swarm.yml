@@ -34,8 +34,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-2.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
     command: ["ComposePostService"]
     hostname: compose-post-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -56,8 +56,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-2.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
 
   home-timeline-service:
     depends_on:
@@ -69,8 +69,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-0.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-0.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-0.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-0.fps-231165.infosphere-pg0.emulab.net"
     command: ["HomeTimelineService"]
     hostname: home-timeline-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -88,8 +88,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-3.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
     hostname: media-frontend
     image: yg397/media-frontend:xenial
     ports:
@@ -112,8 +112,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-1.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-1.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-1.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-1.fps-231165.infosphere-pg0.emulab.net"
 
   media-mongodb:
     depends_on:
@@ -129,8 +129,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-3.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
 
   media-service:
     depends_on:
@@ -143,8 +143,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-2.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
     command: ["MediaService"]
     hostname: media-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -162,8 +162,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-5.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-5.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-5.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-5.fps-231165.infosphere-pg0.emulab.net"
     hostname: nginx-web-server
     image: yg397/openresty-thrift:xenial
     ports:
@@ -191,8 +191,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-2.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
 
   post-storage-mongodb:
     depends_on:
@@ -208,8 +208,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-1.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-1.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-1.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-1.fps-231165.infosphere-pg0.emulab.net"
 
   post-storage-service:
     depends_on:
@@ -222,8 +222,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-1.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-1.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-1.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-1.fps-231165.infosphere-pg0.emulab.net"
     command: ["PostStorageService"]
     hostname: post-storage-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -245,8 +245,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-2.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
 
   social-graph-redis:
     depends_on:
@@ -261,8 +261,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-4.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
 
   social-graph-service:
     depends_on:
@@ -275,8 +275,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-3.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
     command: ["SocialGraphService"]
     hostname: social-graph-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -294,8 +294,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-3.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
     command: ["TextService"]
     hostname: text-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -313,8 +313,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-4.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
     command: ["UniqueIdService"]
     hostname: unique-id-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -336,8 +336,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-3.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
 
   url-shorten-mongodb:
     depends_on:
@@ -353,8 +353,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-5.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-5.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-5.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-5.fps-231165.infosphere-pg0.emulab.net"
 
   url-shorten-service:
     depends_on:
@@ -367,8 +367,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-2.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
     command: ["UrlShortenService"]
     hostname: url-shorten-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -390,8 +390,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-4.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
 
   user-mention-service:
     depends_on:
@@ -403,8 +403,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-2.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
     command: ["UserMentionService"]
     hostname: user-mention-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -426,8 +426,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-0.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-0.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-0.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-0.fps-231165.infosphere-pg0.emulab.net"
 
   user-service:
     depends_on:
@@ -440,8 +440,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-4.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
     command: ["UserService"]
     hostname: user-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -463,8 +463,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-4.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
 
   user-timeline-redis:
     depends_on:
@@ -479,8 +479,8 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-3.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
 
   user-timeline-service:
     depends_on:
@@ -492,8 +492,8 @@ services:
         condition: any
       placement:
           constraints:
-            - "node.hostname == node-4.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
     command: ["UserTimelineService"]
     hostname: user-timeline-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -547,16 +547,16 @@ services:
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-0.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-0.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-0.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-0.fps-231165.infosphere-pg0.emulab.net"
 
   io-intensive:
     image: 127.0.0.1:5000/io_intensive
     deploy:
       placement:
           constraints:
-            - "node.hostname == node-0.fps-231033.infosphere.emulab.net" 
-            - "node.hostname == node-0.fps-231033.infosphere-pg0.emulab.net"
+            - "node.hostname == node-0.fps-231165.infosphere.emulab.net" 
+            - "node.hostname == node-0.fps-231165.infosphere-pg0.emulab.net"
   
 networks:
   default:
