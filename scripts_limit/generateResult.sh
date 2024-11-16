@@ -48,8 +48,6 @@ for i in $(ls -d */); do
 
     # Move processed directory to /docker-store
     cd ..
-    mv "$i" /docker-store/
-    echo "Moved $i to /docker-store"
 done
 
 # Currently we are not running the following script as we do not have enough tiers for it to be useful
