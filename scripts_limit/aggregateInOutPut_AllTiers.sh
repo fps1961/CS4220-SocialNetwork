@@ -54,6 +54,6 @@ hosts="VM0,VM1,VM2,VM3,VM4,VM5"
 collectls=`ls |egrep '\w+[0-9]_CPU+.csv' | tr '\n' ',' | sed 's/,$//'`
 collectlNW=`ls |egrep '\w+[0-9]_collectl+.csv' | tr '\n' ',' | sed 's/,$//'`
 
-python3 detailRT_fig3.py $output_name "***WL"${concurrency}"***" $x1 $x2 $timestamp_offset $collectls $collectlNW $hosts
 python3 histogram_plot.py $tiers $concurrency
 python3 tier_visualization.py $tiers $timeSpan $concurrency $output "***WL"${concurrency}"***" $x1 $x2 $timestamp_offset $types
+python3 detailRT_fig3.py $output_name "***WL"${concurrency}"***" $x1 $x2 $timestamp_offset $collectls $collectlNW $hosts
