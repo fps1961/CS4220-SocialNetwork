@@ -33,15 +33,15 @@ install_docker = '''if ! command -v docker &> /dev/null; then
     sudo systemctl stop docker
 
     # Create new directory for Docker data
-    sudo mkdir -p /mnt/data/docker
+    sudo mkdir -p /docker-store/data/docker
 
     # Configure Docker to use the new directory for data storage
-    echo '{"data-root": "/dev/mnt/data/docker"}' | sudo tee /etc/docker/daemon.json > /dev/null
+    echo '{"data-root": "/docker-store/data/docker"}' | sudo tee /etc/docker/daemon.json > /dev/null
 
-    # Optionally, move existing Docker data from /var/lib/docker to /mnt/data/docker
+    # Optionally, move existing Docker data from /var/lib/docker to /docker-store/data/docker
     if [ -d "/var/lib/docker" ]; then
-        echo "Moving existing Docker data from /var/lib/docker to /mnt/data/docker"
-        sudo rsync -aP /var/lib/docker/ /mnt/data/docker/
+        echo "Moving existing Docker data from /var/lib/docker to /docker-store/data/docker"
+        sudo rsync -aP /var/lib/docker/ /docker-store/data/docker/
     fi
 
     # Restart Docker service
