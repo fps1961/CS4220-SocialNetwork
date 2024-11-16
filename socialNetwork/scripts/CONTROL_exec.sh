@@ -10,26 +10,26 @@ ssh benchmark "
   rm -rf $TMP_RESULTS_DIR_BASE/$RUBBOS_RESULTS_DIR_NAME/*
 "
 
-# Trying to simulation 5000 users
-for i in "rubbos.properties_1000"
-do
+property_files=("rubbos.properties_1000" "rubbos.properties_2000", "rubbos.properties_4000", "rubbos.properties_8000", "rubbos.properties_10000", "rubbos.properties_20000", "rubbos.properties_40000", "rubbos.properties_69000")
 
-  ssh benchmark "
+# Trying to simulation 5000 users
+for i in "${property_files[@]}"; do
+
+    ssh benchmark "
     source $HOME/rubbos/set_elba_env.sh
     rm -f $RUBBOS_HOME/Client/rubbos.properties
   "
 
-  scp $WORK_HOME/runtime_files/$i benchmark:$RUBBOS_HOME/Client/rubbos.properties
+    scp $WORK_HOME/runtime_files/$i benchmark:$RUBBOS_HOME/Client/rubbos.properties
 
-  # get HTTP request latency
-  # ssh node-6 "rm -f $HOME/node6_sysdig.log; sudo sysdig -c httplog > $HOME/node6_sysdig.log &" &
+    # get HTTP request latency
+    # ssh node-6 "rm -f $HOME/node6_sysdig.log; sudo sysdig -c httplog > $HOME/node6_sysdig.log &" &
 
-  # Browsing Only
-  echo "Start Browsing Only with $i"
-  echo "Removing previous logs..."
+    # Browsing Only
+    echo "Start Browsing Only with $i"
+    echo "Removing previous logs..."
 
-
-  ssh benchmark "
+    ssh benchmark "
     source $HOME/rubbos/set_elba_env.sh
     cd $RUBBOS_HOME/bench
     \rm -r 20*
@@ -79,19 +79,17 @@ do
     scp -r $TMP_RESULTS_DIR_BASE/$RUBBOS_RESULTS_DIR_NAME $RUBBOS_RESULTS_HOST:$BONN_RUBBOS_RESULTS_DIR_BASE
   "
 
-  ssh node-6 "sudo pkill -9 sysdig"
+    ssh node-6 "sudo pkill -9 sysdig"
 
-  ssh node-0 "
+    ssh node-0 "
   $WORK_HOME/scripts/stopall.sh
   "
 
-  sleep 15
-  echo "End Browsing Only with $i"
+    sleep 15
+    echo "End Browsing Only with $i"
 
-
-  echo "End Read/Write with $i"
+    echo "End Read/Write with $i"
 
 done
-
 
 echo "Finish RUBBoS"
