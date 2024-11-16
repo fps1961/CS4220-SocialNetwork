@@ -33,6 +33,7 @@ install_docker = '''if ! command -v docker &> /dev/null; then
     sudo systemctl stop docker
 
     # Create new directory for Docker data
+    sudo rm -rf /docker-store/data/*
     sudo mkdir -p /docker-store/data/docker
 
     # Configure Docker to use the new directory for data storage
