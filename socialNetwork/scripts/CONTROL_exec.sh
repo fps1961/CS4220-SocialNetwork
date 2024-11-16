@@ -40,11 +40,17 @@ do
     date
     rm Experiments_timestamp.log
 
-    ssh node-0 "$WORK_HOME/scripts/emptyLogs.sh"
-    ssh node-0 "$WORK_HOME/scripts/collectlMonitor.sh"
+    ssh node-0 '
+        source ~/DeathStarBench/socialNetwork/set_elba_env.sh
+        $WORK_HOME/scripts/emptyLogs.sh
+        $WORK_HOME/scripts/collectlMonitor.sh
+    '
 
 
     sleep 10
+    chmod +x /users/FPS/elba/rubbos/jdk1.8.0_241/bin/java
+    chmod +x log_time.sh
+    chmod +x rubbos-servletsBO.sh
     ./log_time.sh
     ./rubbos-servletsBO.sh
     # Collect results

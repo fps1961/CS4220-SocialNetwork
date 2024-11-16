@@ -35,6 +35,7 @@ ssh node-4 'containerid=$(sudo docker ps -aqf "name=^socialNetwork_unique-id-ser
 
 ssh node-5 'containerid=$(sudo docker ps -aqf "name=^socialNetwork_url-shorten-mongodb"); sudo docker update --cpuset-cpus 1 $containerid'
 ssh node-5 'containerid=$(sudo docker ps -aqf "name=^socialNetwork_nginx-web-server"); sudo docker update --cpuset-cpus "2-9" $containerid'
+ssh node-5 'containerid=$(sudo docker ps -aqf "name=^socialNetwork_nginx-web-server"); sudo docker update --cpuset-cpus "0-7" $containerid'
 
 ## example of how to replay back the collectl results
 #collectl -scdn -p ./VMelba9-20130922-083628.raw  -P -f . -oUmz --from 20130922:08:36-08:39

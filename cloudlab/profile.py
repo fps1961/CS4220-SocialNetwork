@@ -1,9 +1,4 @@
-"""12 bare-metal x86 nodes running Ubuntu 20.04 LTS (focal) 64-bit"""
-
-#
-# NOTE: This code was machine converted. An actual human would not
-#       write code like this!
-#
+"""12 bare-metal x86 nodes running Ubuntu 20.04 LTS (focal) 64-bit with block stores mounted at /my-data"""
 
 # Import the Portal object.
 import geni.portal as portal
@@ -18,14 +13,28 @@ pc = portal.Context()
 # Create a Request object to start building the RSpec.
 request = pc.makeRequestRSpec()
 
+# Configuration parameters
 node_cnt = 12
-nodes = []
-hw_type = 'r320'
+hw_type = 'd710'
 disk_img = 'urn:publicid:IDN+emulab.net+image+emulab-ops//UBUNTU20-64-STD'
+blockstore_size = "90GB"
+blockstore_mount_point = "/docker-store"
+
+# List to store nodes
+nodes = []
+
+# Create nodes and add blockstores
 for node_idx in range(node_cnt):
+    # Create a node
     node_new = request.RawPC('node-%s' % node_idx)
     node_new.hardware_type = hw_type
     node_new.disk_image = disk_img
+
+    # Add a blockstore to the node
+    bs = node_new.Blockstore("blockstore-%s" % node_idx, blockstore_mount_point)
+    bs.size = blockstore_size
+
+    # Add the node and its interface to the list
     nodes.append((node_new, node_new.addInterface('interface-%s' % node_idx)))
 
 # Link link-0
