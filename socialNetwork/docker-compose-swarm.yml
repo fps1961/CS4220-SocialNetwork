@@ -33,9 +33,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-2.fps-231165.infosphere.emulab.net]
     command: ["ComposePostService"]
     hostname: compose-post-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -55,9 +53,7 @@ services:
       - /users/FPS/DeathStarBench/socialNetwork/keys:/keys
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-2.fps-231165.infosphere.emulab.net]
 
   home-timeline-service:
     depends_on:
@@ -68,9 +64,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-0.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-0.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-0.fps-231165.infosphere.emulab.net]
     command: ["HomeTimelineService"]
     hostname: home-timeline-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -87,9 +81,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-3.fps-231165.infosphere.emulab.net]
     hostname: media-frontend
     image: yg397/media-frontend:xenial
     ports:
@@ -111,9 +103,7 @@ services:
       - "-c 4096"
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-1.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-1.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-1.fps-231165.infosphere.emulab.net]
 
   media-mongodb:
     depends_on:
@@ -128,9 +118,7 @@ services:
       - /users/FPS/DeathStarBench/socialNetwork/keys:/keys
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-3.fps-231165.infosphere.emulab.net]
 
   media-service:
     depends_on:
@@ -142,9 +130,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-2.fps-231165.infosphere.emulab.net]
     command: ["MediaService"]
     hostname: media-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -161,9 +147,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-5.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-5.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-5.fps-231165.infosphere.emulab.net]
     hostname: nginx-web-server
     image: yg397/openresty-thrift:xenial
     ports:
@@ -190,9 +174,7 @@ services:
       - "-c 4096"
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-2.fps-231165.infosphere.emulab.net]
 
   post-storage-mongodb:
     depends_on:
@@ -207,9 +189,7 @@ services:
       - /users/FPS/DeathStarBench/socialNetwork/keys:/keys
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-1.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-1.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-1.fps-231165.infosphere.emulab.net]
 
   post-storage-service:
     depends_on:
@@ -221,9 +201,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-1.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-1.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-1.fps-231165.infosphere.emulab.net]
     command: ["PostStorageService"]
     hostname: post-storage-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -244,9 +222,7 @@ services:
       - /users/FPS/DeathStarBench/socialNetwork/keys:/keys
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-2.fps-231165.infosphere.emulab.net]
 
   social-graph-redis:
     depends_on:
@@ -260,9 +236,7 @@ services:
       - /users/FPS/DeathStarBench/socialNetwork/keys:/keys
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-4.fps-231165.infosphere.emulab.net]
 
   social-graph-service:
     depends_on:
@@ -274,9 +248,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-3.fps-231165.infosphere.emulab.net]
     command: ["SocialGraphService"]
     hostname: social-graph-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -293,9 +265,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-3.fps-231165.infosphere.emulab.net]
     command: ["TextService"]
     hostname: text-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -312,9 +282,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-4.fps-231165.infosphere.emulab.net]
     command: ["UniqueIdService"]
     hostname: unique-id-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -335,9 +303,7 @@ services:
       - "-c 4096"
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-3.fps-231165.infosphere.emulab.net]
 
   url-shorten-mongodb:
     depends_on:
@@ -352,9 +318,7 @@ services:
       - /users/FPS/DeathStarBench/socialNetwork/keys:/keys
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-5.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-5.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-5.fps-231165.infosphere.emulab.net]
 
   url-shorten-service:
     depends_on:
@@ -366,9 +330,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-2.fps-231165.infosphere.emulab.net]
     command: ["UrlShortenService"]
     hostname: url-shorten-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -389,9 +351,7 @@ services:
       - "-c 4096"
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-4.fps-231165.infosphere.emulab.net]
 
   user-mention-service:
     depends_on:
@@ -402,9 +362,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-2.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-2.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-2.fps-231165.infosphere.emulab.net]
     command: ["UserMentionService"]
     hostname: user-mention-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -425,9 +383,7 @@ services:
       - /users/FPS/DeathStarBench/socialNetwork/keys:/keys
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-0.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-0.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-0.fps-231165.infosphere.emulab.net]
 
   user-service:
     depends_on:
@@ -439,9 +395,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-4.fps-231165.infosphere.emulab.net]
     command: ["UserService"]
     hostname: user-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -462,9 +416,7 @@ services:
       - /users/FPS/DeathStarBench/socialNetwork/keys:/keys
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-4.fps-231165.infosphere.emulab.net]
 
   user-timeline-redis:
     depends_on:
@@ -478,9 +430,7 @@ services:
       - /users/FPS/DeathStarBench/socialNetwork/keys:/keys
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-3.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-3.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-3.fps-231165.infosphere.emulab.net]
 
   user-timeline-service:
     depends_on:
@@ -491,9 +441,7 @@ services:
       restart_policy:
         condition: any
       placement:
-          constraints:
-            - "node.hostname == node-4.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-4.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-4.fps-231165.infosphere.emulab.net]
     command: ["UserTimelineService"]
     hostname: user-timeline-service
     image: 127.0.0.1:5000/social-network-microservices:withLog_01
@@ -546,18 +494,14 @@ services:
     image: 127.0.0.1:5000/cpu_intensive
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-0.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-0.fps-231165.infosphere-pg0.emulab.net"
+        constraints: [node.hostname == node-0.fps-231165.infosphere.emulab.net]
 
   io-intensive:
     image: 127.0.0.1:5000/io_intensive
     deploy:
       placement:
-          constraints:
-            - "node.hostname == node-0.fps-231165.infosphere.emulab.net" 
-            - "node.hostname == node-0.fps-231165.infosphere-pg0.emulab.net"
-  
+        constraints: [node.hostname == node-0.fps-231165.infosphere.emulab.net]
+
 networks:
   default:
     driver: overlay
