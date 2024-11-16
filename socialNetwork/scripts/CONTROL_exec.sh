@@ -10,7 +10,7 @@ ssh benchmark "
   rm -rf $TMP_RESULTS_DIR_BASE/$RUBBOS_RESULTS_DIR_NAME/*
 "
 
-property_files=("rubbos.properties_1000" "rubbos.properties_2000", "rubbos.properties_4000", "rubbos.properties_8000", "rubbos.properties_10000", "rubbos.properties_20000", "rubbos.properties_40000", "rubbos.properties_69000")
+property_files=("rubbos.properties_2000" "rubbos.properties_4000"  "rubbos.properties_8000"  "rubbos.properties_10000"  "rubbos.properties_20000" "rubbos.properties_40000"  "rubbos.properties_69000")
 
 # Trying to simulation 5000 users
 for i in "${property_files[@]}"; do
