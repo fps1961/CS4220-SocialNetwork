@@ -59,15 +59,16 @@ for i in "${property_files[@]}"; do
     cd 20*
 
     ssh node-0 "$WORK_HOME/scripts/endCollectl.sh"
-    # ssh node-0 "$WORK_HOME/scripts/endSysdig.sh"
-    ssh node-0 "$WORK_HOME/scripts/getLogs.sh"
     scp -r node-0:/tmp/*.raw.gz ./
+    ssh node-0 "rm -rf /tmp/*.raw.gz"
+
+    ssh node-0 "$WORK_HOME/scripts/getLogs.sh"
     scp -r node-0:/tmp/log* ./
+    ssh node-o "rm -rf /tmp/*.log"
     scp -r node-0:/tmp/node*.log ./
     cp $RUBBOS_HOME/bench/20*/index.html ./
     cp $RUBBOS_HOME/bench/20*/result*.jtl ./
 
-    # scp node-6:$HOME/node6_sysdig.log ./
     scp node-0:$WORK_HOME/set_elba_env.sh ./
 
 
