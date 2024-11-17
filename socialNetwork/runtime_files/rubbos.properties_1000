@@ -35,7 +35,7 @@ database_servers = 192.168.10.32
 
 
 database_slave_servers =
-workload_remote_client_nodes = 10.10.1.8,10.10.1.9,10.10.1.10,10.10.1.11,10.10.1.12
+workload_remote_client_nodes = 10.10.1.8,10.10.1.9,10.10.1.10,10.10.1.11
 
 #workload_remote_client_nodes =
 
@@ -57,13 +57,13 @@ workload_number_of_columns = 24
 workload_number_of_rows = 26
 workload_maximum_number_of_transitions = 1000
 workload_use_tpcw_think_time = yes
-workload_tpcw_think_time = 5000
+workload_tpcw_think_time = 7000
 workload_number_of_stories_per_page = 20
 
-workload_up_ramp_time_in_ms = 30000
+workload_up_ramp_time_in_ms = 120000
 workload_up_ramp_slowdown_factor = 2
 
-workload_session_run_time_in_ms = 300000
+workload_session_run_time_in_ms = 180000
 workload_down_ramp_time_in_ms = 30000
 workload_down_ramp_slowdown_factor = 3
 workload_percentage_of_author = 10
