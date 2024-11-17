@@ -14,9 +14,6 @@ property_files=("rubbos.properties_40000")
 
 # Trying to simulation 5000 users
 for i in "${property_files[@]}"; do
-
-    chmod 400 /users/${username}/.ssh/id_rsa
-    chmod 400 /users/${username}/.ssh/id_rsa.pub
     ssh benchmark "
     source $HOME/rubbos/set_elba_env.sh
     rm -f $RUBBOS_HOME/Client/rubbos.properties
