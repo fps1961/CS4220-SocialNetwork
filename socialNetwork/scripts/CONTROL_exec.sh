@@ -64,8 +64,9 @@ for i in "${property_files[@]}"; do
 
     ssh node-0 "$WORK_HOME/scripts/getLogs.sh"
     scp -r node-0:/tmp/log* ./
-    ssh node-o "rm -rf /tmp/*.log"
+    ssh node-0 "rm -rf /tmp/log*"
     scp -r node-0:/tmp/node*.log ./
+    ssh node-0 "rm -rf /tmp/node*.log"
     cp $RUBBOS_HOME/bench/20*/index.html ./
     cp $RUBBOS_HOME/bench/20*/result*.jtl ./
 
@@ -77,6 +78,7 @@ for i in "${property_files[@]}"; do
     cd ..
     mv 20* $TMP_RESULTS_DIR_BASE/$RUBBOS_RESULTS_DIR_NAME/
     scp -r $TMP_RESULTS_DIR_BASE/$RUBBOS_RESULTS_DIR_NAME $RUBBOS_RESULTS_HOST:$BONN_RUBBOS_RESULTS_DIR_BASE
+    rm -rf $TMP_RESULTS_DIR_BASE/$RUBBOS_RESULTS_DIR_NAME/*
   "
 
     ssh node-6 "sudo pkill -9 sysdig"
