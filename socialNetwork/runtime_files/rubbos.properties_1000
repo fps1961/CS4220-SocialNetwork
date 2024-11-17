@@ -6,7 +6,7 @@ httpd_hostname = 10.10.1.1
 httpd_port = 8080
 
 # C/JDBC server to monitor (if any)
-cjdbc_hostname = 
+cjdbc_hostname =
 
 # Precise which version to use. Valid options are : PHP, Servlets, EJB
 httpd_use_version = Servlets
@@ -35,7 +35,7 @@ database_servers = 192.168.10.32
 
 
 database_slave_servers =
-workload_remote_client_nodes = 10.10.1.8,10.10.1.9,10.10.1.10,10.10.1.11
+workload_remote_client_nodes = 10.10.1.8,10.10.1.9,10.10.1.10,10.10.1.11,10.10.1.12
 
 #workload_remote_client_nodes =
 
@@ -46,24 +46,24 @@ workload_benchmark_node = 10.10.1.7
 
 workload_remote_client_command = /users/FPS/elba/rubbos/jdk1.8.0_241/bin/java -classpath .:/users/FPS/elba/rubbos/RUBBoS/Client/:/users/FPS/elba/rubbos/RUBBoS/Client/RubbosClient-0.1.jar -Xmx1300m -Dhttp.keepAlive=true -Dhttp.maxConnections=1000000 edu.rice.rubbos.client.NewEmulator
 
-workload_number_of_clients_per_node = 200
+workload_number_of_clients_per_node = 8000
 
-workload_dyn = 200
+workload_dyn = 8000
 
 # Workload: precise which transition table to use
 workload_user_transition_table = /users/FPS/elba/rubbos/RUBBoS/workload/user_transitions.txt
 workload_author_transition_table = /users/FPS/elba/rubbos/RUBBoS/workload/author_transitions.txt
-workload_number_of_columns = 24
-workload_number_of_rows = 26
+workload_number_of_columns = 50
+workload_number_of_rows = 50
 workload_maximum_number_of_transitions = 1000
 workload_use_tpcw_think_time = yes
-workload_tpcw_think_time = 7000
+workload_tpcw_think_time = 5000
 workload_number_of_stories_per_page = 20
 
-workload_up_ramp_time_in_ms = 120000
+workload_up_ramp_time_in_ms = 30000
 workload_up_ramp_slowdown_factor = 2
 
-workload_session_run_time_in_ms = 180000
+workload_session_run_time_in_ms = 300000
 workload_down_ramp_time_in_ms = 30000
 workload_down_ramp_slowdown_factor = 3
 workload_percentage_of_author = 10
