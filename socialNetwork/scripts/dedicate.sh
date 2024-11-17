@@ -34,7 +34,6 @@ ssh node-4 'containerid=$(sudo docker ps -aqf "name=^socialNetwork_user-timeline
 ssh node-4 'containerid=$(sudo docker ps -aqf "name=^socialNetwork_unique-id-service"); sudo docker update --cpuset-cpus 7 $containerid'
 
 ssh node-5 'containerid=$(sudo docker ps -aqf "name=^socialNetwork_url-shorten-mongodb"); sudo docker update --cpuset-cpus 1 $containerid'
-ssh node-5 'containerid=$(sudo docker ps -aqf "name=^socialNetwork_nginx-web-server"); sudo docker update --cpuset-cpus "2-9" $containerid'
 ssh node-5 'containerid=$(sudo docker ps -aqf "name=^socialNetwork_nginx-web-server"); sudo docker update --cpuset-cpus "0-7" $containerid'
 
 ## example of how to replay back the collectl results
