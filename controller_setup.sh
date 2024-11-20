@@ -91,21 +91,28 @@ ssh -o StrictHostKeyChecking=no -i ${private_ssh_key_path} ${username}@${control
   git config --global core.editor \"vim\"
   chmod 400 ~/.ssh/id_rsa
   chmod 400 ~/.ssh/id_rsa.pub
-  rm -rf SetupScripts
   git clone git@github.com:fps1961/CS4220-SocialNetwork.git SetupScripts
   unzip socialNetworkLSU
   sudo apt-get update
   sudo apt-get install -y python3-pip maven pdfgrep
+  chmod -R +x ./SetupScripts
   cd SetupScripts
   pip3 install -r requirements.txt
-  python setup_docker_swarm.py -a 10.10.1.1 -n ${swarm_node_number} -cn ${client_node_number}
+  python3 setup_docker_swarm.py -a 10.10.1.1 -n ${swarm_node_number} -cn ${client_node_number}
+  cd ..
+  rm -rf SetupScripts
+  rm -rf *.zip
+  rm -rf socialNetworkLSU
   cd ~/DeathStarBench/socialNetwork
   source set_elba_env.sh
   chmod -R +x ./scripts/
-  sudo ./scripts/CONTROL_exec.sh
-  sudo cp /users/${username}/scripts_limit/generateResult.sh /users/${username}/socialNetwork/
+  ./scripts/CONTROL_exec.sh
+  cp /users/${username}/scripts_limit/generateResult.sh /users/${username}/socialNetwork/
+  cd /users/${username}/
+  rm -rf ~/DeathStarBench/*
+  sudo chmod -R +x ./
   sudo apt install -y python2
   cd /users/${username}/socialNetwork/
   sudo chmod -R +x ./generateResult.sh
-  sudo ./generateResult.sh &> output.log
+  ./generateResult.sh &> output.log
 "
